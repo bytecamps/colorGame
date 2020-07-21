@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var colors = ["red", "green", "blue", "black", "orange", "pink", "purple", "yellow"]
     @State var score = 0
     @State var timeLeft = 15
+    @State var buttonDisabled = false
 
     var body: some View {
         VStack {
@@ -49,6 +50,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.red)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                     
                     Button(action: {
                         self.checkButtonPressed(colorOfButtonPress: "green")
@@ -61,6 +63,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.green)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                 }
                 
                 HStack (spacing: 20) {
@@ -75,6 +78,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                     
                     Button(action: {
                         print("button pressed")
@@ -88,6 +92,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.black)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                 }
                 
                 HStack (spacing: 20) {
@@ -102,6 +107,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.orange)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                     
                     Button(action: {
                         self.checkButtonPressed(colorOfButtonPress: "pink")
@@ -114,6 +120,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.pink)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                 }
                 
                 HStack (spacing: 20) {
@@ -128,6 +135,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.purple)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                     
                     Button(action: {
                         self.checkButtonPressed(colorOfButtonPress: "yellow")
@@ -140,6 +148,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.yellow)
                     .cornerRadius(20)
+                    .disabled(buttonDisabled)
                 }
             }.padding(.horizontal, 20)
         }
@@ -147,6 +156,7 @@ struct ContentView: View {
     
     func startGame() {
         if timeLeft == 15 {
+            buttonDisabled = false
             countDown()
             putInNewColor()
             
@@ -192,6 +202,7 @@ struct ContentView: View {
         }
         else {
             text = "Start Over"
+            buttonDisabled = true
         }
     }
 }
