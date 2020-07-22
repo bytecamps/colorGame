@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 struct ContentView: View {
     @State var text = "Start"
@@ -18,21 +20,39 @@ struct ContentView: View {
     @State var score = 0
     @State var timeLeft = 15
     @State var buttonDisabled = false
+    
+    @State var player = "Frank"
+    
+    var db = Firestore.firestore()
 
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink (destination: InstructionsView()) {
-                    HStack {
-                        Text("Instructions")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                        Image(systemName: "info.circle").font(.system(size: 20))
-                    }
-                }.foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(20)
-                    .padding(.top, 20)
+                HStack {
+                    NavigationLink (destination: leaderboard()) {
+                        HStack {
+                            Text("Leaderboard")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                            Image(systemName: "text.bubble").font(.system(size: 20))
+                        }
+                    }.foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                    
+                    NavigationLink (destination: InstructionsView()) {
+                        HStack {
+                            Text("Instructions")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                            Image(systemName: "info.circle").font(.system(size: 20))
+                        }
+                    }.foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                    
+                }.padding(.top, 20)
+                
                 Spacer()
                 Text("Score: \(score)")
                     .font(.system(.title, design: .rounded))
@@ -224,9 +244,60 @@ struct ContentView: View {
         else {
             text = "Start Over"
             buttonDisabled = true
+            
+            let docRef = db.collection("leaderboard").document(player)
+
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                    
+                    if var userHighScore = document.get("score") as? Int  {
+                        print("userHighScore", userHighScore)
+                        if self.score > userHighScore {
+                            self.uploadScoreToFirebase()
+                        }
+                    }
+                    
+                    
+                } else {
+                    print("Document does not exist")
+                    self.createFirebaseDocument()
+                }
+            }
+        }
+    }
+    
+    func uploadScoreToFirebase() {
+        // Upload to Firebase
+        db.collection("leaderboard").document(player).updateData([
+            "name" : player,
+            "score" : score
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func createFirebaseDocument() {
+        // Upload to Firebase
+        db.collection("leaderboard").document(player).setData([
+            "name" : player,
+            "score" : score
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
