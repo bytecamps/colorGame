@@ -20,137 +20,158 @@ struct ContentView: View {
     @State var buttonDisabled = false
 
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Welcome to the Color Game").font(.system(.title, design: .rounded)).foregroundColor(Color(red: 0.106, green: 0.122, blue: 0.231))
-            Spacer()
-            Text("Score: \(score)")
-                .font(.system(.title, design: .rounded))
-                .foregroundColor(Color(red: 0.902, green: 0.224, blue: 0.275))
-                .padding(.bottom, 30.0)
-            Text("Time: \(timeLeft)")
-            .font(.system(.title, design: .rounded))
-            .foregroundColor(Color(red: 0.902, green: 0.224, blue: 0.275))
-            Spacer()
-            Text(text).font(.system(size: 60, weight: .black, design: .rounded)).foregroundColor(color)
-                .onTapGesture {
-                    self.startGame()
-            }
-            Spacer()
-            VStack (spacing: 20){
-                HStack (spacing: 20) {
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "red")
-                    }) {
-                        Text("Red")
+        NavigationView {
+            VStack {
+                NavigationLink (destination: InstructionsView()) {
+                    HStack {
+                        Text("Instructions")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
+                        Image(systemName: "info.circle").font(.system(size: 20))
                     }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                    
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "green")
-                    }) {
-                        Text("Green")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                }
-                
-                HStack (spacing: 20) {
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "blue")
-                    }) {
-                        Text("Blue")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
+                }.foregroundColor(.white)
+                    .padding()
                     .background(Color.blue)
                     .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                    
-                    Button(action: {
-                        print("button pressed")
-                        self.checkButtonPressed(colorOfButtonPress: "black")
-                    }) {
-                        Text("Black")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.black)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
+                    .padding(.top, 20)
+                Spacer()
+                Text("Score: \(score)")
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(Color(red: 0.902, green: 0.224, blue: 0.275))
+                    .padding(.bottom, 30.0)
+                Text("Time: \(timeLeft)")
+                .font(.system(.title, design: .rounded))
+                .foregroundColor(Color(red: 0.902, green: 0.224, blue: 0.275))
+                Spacer()
+                Text(text).font(.system(size: 60, weight: .black, design: .rounded)).foregroundColor(color)
+                    .onTapGesture {
+                        self.startGame()
                 }
+                Spacer()
+                VStack (spacing: 20){
+                    HStack (spacing: 20) {
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "red")
+                        }) {
+                            Text("Red")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                        
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "green")
+                        }) {
+                            Text("Green")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                    }
+                    
+                    HStack (spacing: 20) {
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "blue")
+                        }) {
+                            Text("Blue")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                        
+                        Button(action: {
+                            print("button pressed")
+                            self.checkButtonPressed(colorOfButtonPress: "black")
+                        }) {
+                            Text("Black")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.black)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                    }
+                    
+                    HStack (spacing: 20) {
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "orange")
+                        }) {
+                            Text("Orange")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                        
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "pink")
+                        }) {
+                            Text("Pink")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.pink)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                    }
+                    
+                    HStack (spacing: 20) {
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "purple")
+                        }) {
+                            Text("Purple")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.purple)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                        
+                        Button(action: {
+                            self.checkButtonPressed(colorOfButtonPress: "yellow")
+                        }) {
+                            Text("Yellow")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.yellow)
+                        .cornerRadius(20)
+                        .disabled(buttonDisabled)
+                    }
+                }.padding(.horizontal, 20)
                 
-                HStack (spacing: 20) {
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "orange")
-                    }) {
-                        Text("Orange")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.orange)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                    
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "pink")
-                    }) {
-                        Text("Pink")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.pink)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                }
-                
-                HStack (spacing: 20) {
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "purple")
-                    }) {
-                        Text("Purple")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.purple)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                    
-                    Button(action: {
-                        self.checkButtonPressed(colorOfButtonPress: "yellow")
-                    }) {
-                        Text("Yellow")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.yellow)
-                    .cornerRadius(20)
-                    .disabled(buttonDisabled)
-                }
-            }.padding(.horizontal, 20)
+//                .navigationBarItems(
+//                    leading: Text("Welcome to the Color Game").font(.system(size: 25, weight: .bold, design: .rounded)),
+//
+//                    trailing:
+//                    NavigationLink(destination: InstructionsView()) {
+//                        Image(systemName: "info.circle").font(.system(size: 25))
+//                    }
+//                )
+                    .navigationBarTitle("Welcome to the Color Game", displayMode: .inline)
+            }
         }
     }
     
