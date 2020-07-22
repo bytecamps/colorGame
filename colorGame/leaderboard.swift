@@ -20,7 +20,7 @@ struct leaderboard: View {
     }
     
     func getData(){
-        db.collection("leaderboard")
+        db.collection("leaderboard").order(by: "score", descending: true)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
