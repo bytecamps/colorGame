@@ -21,12 +21,11 @@ struct ContentView: View {
     @State var timeLeft = 15
     @State var buttonDisabled = false
     
-    @State var player = "Frank"
+    @State var player : String
     
     var db = Firestore.firestore()
 
     var body: some View {
-        NavigationView {
             VStack {
                 HStack {
                     NavigationLink (destination: leaderboard()) {
@@ -191,8 +190,10 @@ struct ContentView: View {
 //                    }
 //                )
                     .navigationBarTitle("Welcome to the Color Game", displayMode: .inline)
+                .navigationBarBackButtonHidden(true)
+
             }
-        }
+        
     }
     
     func startGame() {
@@ -301,6 +302,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(player: "Rosalie")
     }
 }

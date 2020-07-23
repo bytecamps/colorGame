@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>631091873861-tnq0qvmu25eo3mjqdse560osf53e3r0k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.631091873861-tnq0qvmu25eo3mjqdse560osf53e3r0k</string>
+	<key>API_KEY</key>
+	<string>AIzaSyABRKS-V_e8TbmW4MKE4sbtSp0fOgfcmhg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>631091873861</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>RosalieWessels.colorGame</string>
+	<key>PROJECT_ID</key>
+	<string>color-gam</string>
+	<key>STORAGE_BUCKET</key>
+	<string>color-gam.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:631091873861:ios:7068d086d2f33f8b447b2c</string>
+	<key>DATABASE_URL</key>
+	<string>https://color-gam.firebaseio.com</string>
+</dict>
+</plist>
